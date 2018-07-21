@@ -19,6 +19,7 @@
 ///<reference path = "../../Scripts/managers/collision.ts"/>
 
 /// <reference path = "../../Scripts/objects/button.ts"/>
+/// <reference path = "../../Scripts/objects/enemy.ts"/>
 /// <reference path = "../../Scripts/objects/bullet.ts"/>
 /// <reference path = "../../Scripts/objects/ocean.ts"/>
 

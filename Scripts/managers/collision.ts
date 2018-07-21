@@ -50,6 +50,20 @@ module managers{
                     }
                     break;
                     
+                
+                case "enemy":
+                createjs.Sound.play("explosion");
+                let explosion = new objects.Explosion;
+                    explosion.x = object2.x;
+                    explosion.y = object2.y;
+                    managers.Game.currentSceneObject.addChild(explosion);
+                    managers.Game.scoreBoard.Score += 200;
+
+                    //reset enemy plane
+                    object2.Reset();
+
+
+                break;
                 }
             }
                 

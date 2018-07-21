@@ -13,6 +13,7 @@ module scenes {
             private _coin: objects.Coin;
 
             private _bulletManager : managers.Bullet;
+            private _enemy : objects.Enemy;
 
         // Public Properties
        
@@ -36,6 +37,7 @@ module scenes {
                this._plane = new objects.Plane();
                managers.Game.plane = this._plane;
                 
+               this._enemy = new objects.Enemy;
                //reference to bulletmanager in the game manager
                this._bulletManager = new managers.Bullet();
                managers.Game.bulletManager = this._bulletManager;
@@ -75,7 +77,7 @@ module scenes {
 
         this._ocean.Update();
         this._plane.Update();
-
+        this._enemy.Update();
         this._bulletManager.Update();
 
         
@@ -92,6 +94,10 @@ module scenes {
             //check collision between plane and current cloud 
             managers.Collision.Check(this._plane, cloud);
         }); 
+
+        this._bulletManager.Bullets.forEach(bullet=>{
+                managers.Collision.Check(bullet, this._enemy);
+        });
             //if lives fall below 0 then swith the scene.
             if(this._scoreBoard.Lives <= 0)
             {
@@ -113,6 +119,8 @@ module scenes {
             //add plane to the scene
             this.addChild(this._plane);
             this.addChild(this._plane.planeFlash);
+            //add enemy to the scene
+            this.addChild(this._enemy);
             //add bullets to the scene
            this._bulletManager.Bullets.forEach(bullet =>
             {

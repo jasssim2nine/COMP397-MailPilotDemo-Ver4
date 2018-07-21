@@ -74,7 +74,7 @@
             "restartButton": { "frames": [28] },
             "smallexplosion": { "frames": [29, 30, 31, 32, 33, 34],
                 "speed": 0.16 },
-            "startButton": { "frames": [35] },
+            "startButton": { "frames": [35] }
         }
     };
     assetManifest = [

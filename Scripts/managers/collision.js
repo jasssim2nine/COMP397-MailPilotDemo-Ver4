@@ -32,24 +32,26 @@ var managers;
                             if (object1.alpha != 0) {
                                 createjs.Sound.play("explosion");
                                 managers.Game.scoreBoard.Lives -= 1;
-                                var explosion_1 = new objects.Explosion;
-                                explosion_1.x = object1.x;
-                                explosion_1.y = object1.y;
-                                managers.Game.currentSceneObject.addChild(explosion_1);
+                                var explosion = new objects.Explosion;
+                                explosion.x = object1.x;
+                                explosion.y = object1.y;
+                                managers.Game.currentSceneObject.addChild(explosion);
                                 object1.alpha = 0;
                                 managers.Game.plane.planeFlash.alpha = 1;
                                 managers.Game.plane.planeFlash.gotoAndPlay("planeflash");
                             }
                             break;
                         case "enemy":
-                            createjs.Sound.play("explosion");
-                            var explosion = new objects.Explosion;
-                            explosion.x = object2.x;
-                            explosion.y = object2.y;
-                            managers.Game.currentSceneObject.addChild(explosion);
-                            managers.Game.scoreBoard.Score += 200;
-                            //reset enemy plane
-                            object2.Reset();
+                            if (object2.alpha != 0) {
+                                createjs.Sound.play("explosion");
+                                var explosion = new objects.Explosion;
+                                explosion.x = object2.x;
+                                explosion.y = object2.y;
+                                managers.Game.currentSceneObject.addChild(explosion);
+                                managers.Game.scoreBoard.Score += 200;
+                                //reset enemy plane
+                                object2.Reset();
+                            }
                             break;
                     }
                 }

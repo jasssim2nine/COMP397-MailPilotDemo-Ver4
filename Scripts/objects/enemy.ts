@@ -32,6 +32,7 @@ module objects{
             public Reset():void{
                 this.x = Math.floor((Math.random() * (640 - this.width)) + this.halfWidth);
                 this.y = -480;
+                this.alpha = 0;
             }
 
            public Move():void{
@@ -40,6 +41,10 @@ module objects{
             }
 
             public CheckBounds():void{
+
+                if((this.y >= 0) && (this.alpha == 0)){
+                    this.alpha = 1;
+                }
                //check lower bounds
                if(this.y >= 480 + this.height)
                {

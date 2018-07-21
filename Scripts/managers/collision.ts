@@ -52,6 +52,7 @@ module managers{
                     
                 
                 case "enemy":
+                if(object2.alpha != 0){
                 createjs.Sound.play("explosion");
                 let explosion = new objects.Explosion;
                     explosion.x = object2.x;
@@ -60,10 +61,11 @@ module managers{
                     managers.Game.scoreBoard.Score += 200;
 
                     //reset enemy plane
-                    object2.Reset();
+                    object2.Reset();    
 
-
+                }
                 break;
+                
                 }
             }
                 

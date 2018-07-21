@@ -33,11 +33,15 @@ var objects;
         Enemy.prototype.Reset = function () {
             this.x = Math.floor((Math.random() * (640 - this.width)) + this.halfWidth);
             this.y = -480;
+            this.alpha = 0;
         };
         Enemy.prototype.Move = function () {
             this.y += this._dy;
         };
         Enemy.prototype.CheckBounds = function () {
+            if ((this.y >= 0) && (this.alpha == 0)) {
+                this.alpha = 1;
+            }
             //check lower bounds
             if (this.y >= 480 + this.height) {
                 this.Reset();

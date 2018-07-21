@@ -12,6 +12,8 @@ module scenes {
             private _engineSound :  createjs.AbstractSoundInstance;
             private _coin: objects.Coin;
 
+            private _bulletManager : managers.Bullet;
+
         // Public Properties
        
 
@@ -33,12 +35,17 @@ module scenes {
                
                this._plane = new objects.Plane();
                managers.Game.plane = this._plane;
+                
+               //reference to bulletmanager in the game manager
+               this._bulletManager = new managers.Bullet();
+               managers.Game.bulletManager = this._bulletManager;
+
                this._coin = new objects.Coin();
                this._island = new objects.Island();
               //instantiate the cloud array
               this._clouds = new Array<objects.Cloud>();
                
-              this._cloudNum =3;
+              this._cloudNum =0;
               //loop and add each cloud to the array
               for(let count= 0; count < this._cloudNum; count++)
               {
@@ -64,10 +71,12 @@ module scenes {
             //check every frame
         public Update() {
 
-            console.info("Game objects " + this.numChildren);
+            //console.info("Game objects :  " + this.numChildren);
 
         this._ocean.Update();
         this._plane.Update();
+
+        this._bulletManager.Update();
 
         
 
@@ -104,6 +113,11 @@ module scenes {
             //add plane to the scene
             this.addChild(this._plane);
             this.addChild(this._plane.planeFlash);
+            //add bullets to the scene
+           this._bulletManager.Bullets.forEach(bullet =>
+            {
+               this.addChild(bullet);
+           });
 
             
             //add cloud to the scene

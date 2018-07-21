@@ -9,7 +9,7 @@ module managers{
         public moveBackward: boolean;
         public moveLeft : boolean;
         public moveRight: boolean;
-        public jump : boolean;
+        public fire : boolean;
         public enabled : boolean;
         public paused : boolean;
 
@@ -54,7 +54,7 @@ module managers{
                 break;
 
                 case config.Keys.SPACE:
-                this.jump = true;
+                this.fire = true;
                 
                 break;
 
@@ -85,7 +85,7 @@ module managers{
                 break;
 
                 case config.Keys.SPACE:
-                this.jump = false;
+                this.fire = false;
                 
                 break;
 

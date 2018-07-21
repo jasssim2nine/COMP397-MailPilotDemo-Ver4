@@ -2,6 +2,8 @@ module objects{
     export class Plane extends objects.GameObject{
     
         //Private Instance Variables
+
+        private _bulletSpawn:math.Vec2;
                 
             //public properties
 
@@ -39,12 +41,15 @@ module objects{
 
                 this.x = 320;
                 this.y = 430;
+
+                this._bulletSpawn = new math.Vec2();
                
             }
             
             public Update():void{
                 this.Move();
                 this.CheckBounds();
+                this.BulletFire();
             }
             public Reset():void{
                 
@@ -76,6 +81,28 @@ module objects{
                     this.x = this.halfWidth;
                 }
               
+            }
+            public BulletFire():void{
+                
+
+                //check if plane is alive
+                if(this.alpha = 1){
+                    let ticker: number  = createjs.Ticker.getTicks();
+                    if((managers.Game.keyBoardManager.fire) && (ticker % 10 == 0)){
+                            console.log("bullet fired");
+                        this._bulletSpawn = new math.Vec2(this.x, this.y - this.halfHeight - 2);
+                        let currentBullet = managers.Game.bulletManager.CurrentBullet;
+                        let bullet = managers.Game.bulletManager.Bullets[currentBullet];
+                        bullet.x = this._bulletSpawn.x;
+                        bullet.y = this._bulletSpawn.y;
+
+                        managers.Game.bulletManager.CurrentBullet++;
+                        if(managers.Game.bulletManager.CurrentBullet > 49){
+                            managers.Game.bulletManager.CurrentBullet = 0;
+                        }
+                    }
+                }
+
             }
                
     }

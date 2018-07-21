@@ -20,6 +20,7 @@ module objects{
         public Start():void{
             this._dx = 0;
             this._dy = -10;
+            this.Reset();
 
         }
 
@@ -31,6 +32,8 @@ module objects{
 
         public Reset():void{
             
+            this.x = -5000;
+            this.y = -5000;
 
         }
 

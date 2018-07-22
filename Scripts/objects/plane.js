@@ -78,6 +78,7 @@ var objects;
                     if (managers.Game.bulletManager.CurrentBullet > 49) {
                         managers.Game.bulletManager.CurrentBullet = 0;
                     }
+                    createjs.Sound.play("bulletSound");
                 }
             }
         };

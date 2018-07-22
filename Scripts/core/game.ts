@@ -108,6 +108,7 @@
         {id:"coin", src:"./Assets/audio/coin.wav"},
         {id:"life", src:"./Assets/audio/life.wav"},
         {id:"explosion", src:"./Assets/audio/explosion.wav"},
+        {id:"bulletSound", src:"./Assets/audio/bullet.wav"},
 
         ];
         //preloads assets

@@ -34,7 +34,7 @@ module managers {
                                 createjs.Sound.play("explosion");
                                 managers.Game.scoreBoard.Lives -= 1;
 
-                                let explosion = new objects.Explosion;
+                                let explosion = new objects.Explosion("explosion");
                                 explosion.x = object1.x;
                                 explosion.y = object1.y;
                                 managers.Game.currentSceneObject.addChild(explosion);
@@ -50,7 +50,7 @@ module managers {
                         case "enemy":
                             if (object2.alpha != 0) {
                                 createjs.Sound.play("explosion");
-                                let explosion = new objects.Explosion;
+                                let explosion = new objects.Explosion("smallexplosion");
                                 explosion.x = object2.x;
                                 explosion.y = object2.y;
                                 managers.Game.currentSceneObject.addChild(explosion);

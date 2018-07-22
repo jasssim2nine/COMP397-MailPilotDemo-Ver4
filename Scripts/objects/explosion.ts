@@ -8,8 +8,8 @@ module objects{
 
 
         //constructors
-        constructor(){
-            super("explosion");
+        constructor(spriteString: string){
+            super(spriteString);
             this.Start();
         }
 

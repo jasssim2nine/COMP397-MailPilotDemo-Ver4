@@ -18,6 +18,7 @@
    let keyBoardManager : managers.Keyboard;
    let textureAtlasData : any;
    let textureAtlas : createjs.SpriteSheet;
+   let stats: Stats;
     
    textureAtlasData = {
 
@@ -122,8 +123,15 @@
             
     }
 
+    function InitStats():void{
+        stats = new Stats();
+        stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+        document.body.appendChild( stats.dom );
+    }
+
     function Start():void{
         console.log("Starting Application....");
+        InitStats();
         textureAtlasData.images = [assetManager.getResult("textureAtlas")];
         textureAtlas = new createjs.SpriteSheet(textureAtlasData);
 
@@ -147,7 +155,7 @@
     
     function Update():void
     {
-      
+              stats.begin();
         //if the scene that is playing returns another scene 
         //then call main again
            if(currentState != managers.Game.currentScene){
@@ -156,6 +164,8 @@
            }
            currentScene.Update();
         stage.update();
+
+        stats.end();
     }
     
 
